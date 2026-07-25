@@ -6,7 +6,7 @@
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-heading);
+  color: inherit;
   line-height: 1.2;
 }
 
@@ -14,6 +14,7 @@
   margin-top: 1rem;
   max-width: 700px;
   margin-inline: auto;
-  color: var(--color-text);
+  color: inherit;
+  opacity: 0.85;
   line-height: 1.7;
 }
