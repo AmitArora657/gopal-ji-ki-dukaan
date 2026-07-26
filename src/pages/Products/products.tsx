@@ -8,16 +8,34 @@ import { products } from "../../data/products";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const categories = useMemo(() => {
+    return [...new Set(products.map((product) => product.category))];
+  }, []);
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
-  }, [searchTerm]);
+    return products.filter((product) => {
+      const matchesSearch = product.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+
+      const matchesCategory =
+        selectedCategory === "All" || product.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory]);
 
   return (
     <>
-      <ProductToolbar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <ProductToolbar
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+      />
 
       <section className="pb-20">
         <Container>
