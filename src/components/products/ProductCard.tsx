@@ -1,12 +1,18 @@
 import type { Product } from "../../types/product";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="overflow-hidden rounded-xl border bg-white shadow-sm transition hover:shadow-lg">
+    <div
+      onClick={() => navigate(`/products/${product.id}`)}
+      className="overflow-hidden rounded-xl border bg-white shadow-sm transition hover:shadow-lg"
+    >
       <img
         src={product.image}
         alt={product.name}

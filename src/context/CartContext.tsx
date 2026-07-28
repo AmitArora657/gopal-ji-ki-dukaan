@@ -1,0 +1,61 @@
+import { createContext, useState, type ReactNode } from "react";
+
+import type { CartItem } from "../types/cart";
+import type { Product } from "../types/product";
+
+interface CartContextType {
+  cart: CartItem[];
+
+  addToCart: (product: Product, quantity: number) => void;
+
+  removeFromCart: (productId: number) => void;
+}
+
+interface CartProviderProps {
+  children: ReactNode;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const CartProvider = ({ children }: CartProviderProps) => {
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  const addToCart = (product: Product, quantity: number) => {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find(
+        (item) => item.product.id === product.id,
+      );
+
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.product.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + quantity,
+              }
+            : item,
+        );
+      }
+
+      return [...prevCart, { product, quantity }];
+    });
+  };
+
+  const removeFromCart = (productId: number) => {
+    console.log(productId);
+  };
+
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export default CartContext;
