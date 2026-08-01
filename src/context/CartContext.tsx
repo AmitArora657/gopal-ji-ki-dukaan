@@ -19,7 +19,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cart, setCart] = useState<CartItem[]>([]);
-
   const addToCart = (product: Product, quantity: number) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find(

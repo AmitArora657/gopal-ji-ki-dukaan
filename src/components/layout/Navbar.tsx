@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom";
 import Container from "../common/Container";
+import useCart from "../../hooks/useCart";
 
 import logo from "../../assets/images/logo.jpg";
 
 const Navbar = () => {
+  const { cart } = useCart();
+
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? "font-semibold text-red-900"
@@ -30,6 +33,9 @@ const Navbar = () => {
 
           <NavLink to="/contact" className={linkClass}>
             Contact
+          </NavLink>
+          <NavLink to="/cart" className={linkClass}>
+            Cart ({cart.length})
           </NavLink>
         </nav>
       </Container>
