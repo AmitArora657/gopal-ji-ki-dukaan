@@ -1,7 +1,7 @@
-import { createContext, useState, type ReactNode } from "react";
-
+import { createContext, type ReactNode } from "react";
 import type { CartItem } from "../types/cart";
 import type { Product } from "../types/product";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 interface CartContextType {
   cart: CartItem[];
@@ -20,7 +20,9 @@ interface CartProviderProps {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  // const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useLocalStorage<CartItem[]>("cart", []);
+
   const addToCart = (product: Product, quantity: number) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find(
