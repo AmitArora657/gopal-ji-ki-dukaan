@@ -1,10 +1,14 @@
 import type { CartItem as CartItemType } from "../../types/cart";
-
+import useCart from "../../hooks/useCart";
+import Button from "../../components/ui/Button";
+import QuantitySelector from "../../components/ProductDetails/QuantitySelector";
 interface CartItemProps {
   item: CartItemType;
 }
 
 const CartItem = ({ item }: CartItemProps) => {
+  const { removeFromCart, updateQuantity } = useCart();
+
   return (
     <div className="flex items-center gap-6 rounded-lg border p-4">
       <img
@@ -18,7 +22,20 @@ const CartItem = ({ item }: CartItemProps) => {
 
         <p className="text-gray-600">₹ {item.product.price}</p>
 
-        <p>Quantity: {item.quantity}</p>
+        <QuantitySelector
+          quantity={item.quantity}
+          onChange={(newQuantity) =>
+            updateQuantity(item.product.id, newQuantity)
+          }
+        />
+        <div className="mt-4">
+          <Button
+            className="bg-red-600 hover:bg-red-700"
+            onClick={() => removeFromCart(item.product.id)}
+          >
+            Remove
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -7,6 +7,8 @@ import logo from "../../assets/images/logo.jpg";
 const Navbar = () => {
   const { cart } = useCart();
 
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     isActive
       ? "font-semibold text-red-900"
@@ -35,7 +37,7 @@ const Navbar = () => {
             Contact
           </NavLink>
           <NavLink to="/cart" className={linkClass}>
-            Cart ({cart.length})
+            Cart ({totalItems})
           </NavLink>
         </nav>
       </Container>

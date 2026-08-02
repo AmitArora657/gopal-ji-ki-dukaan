@@ -1,8 +1,14 @@
 import useCart from "../../hooks/useCart";
 import CartItem from "./CartItem";
+import CartSummary from "./CartSummary";
 
 const Cart = () => {
   const { cart } = useCart();
+
+  const subtotal = cart.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0,
+  );
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
@@ -17,6 +23,7 @@ const Cart = () => {
           ))}
         </div>
       )}
+      <CartSummary subtotal={subtotal} />
     </div>
   );
 };

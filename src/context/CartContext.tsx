@@ -9,6 +9,8 @@ interface CartContextType {
   addToCart: (product: Product, quantity: number) => void;
 
   removeFromCart: (productId: number) => void;
+
+  updateQuantity: (productId: number, quantity: number) => void;
 }
 
 interface CartProviderProps {
@@ -41,7 +43,22 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   const removeFromCart = (productId: number) => {
-    console.log(productId);
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.product.id !== productId),
+    );
+  };
+
+  const updateQuantity = (productId: number, quantity: number) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.product.id === productId
+          ? {
+              ...item,
+              quantity,
+            }
+          : item,
+      ),
+    );
   };
 
   return (
@@ -50,6 +67,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         cart,
         addToCart,
         removeFromCart,
+        updateQuantity,
       }}
     >
       {children}
