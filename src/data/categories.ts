@@ -2,7 +2,8 @@ import type { Category } from "../types/category";
 
 import mukut from "../assets/images/products/mukut.jpg";
 import dress_22 from "../assets/images/products/dress_22.png";
-import Mala_1 from "../assets/images/products/mala_1.png";
+// import Mala_1 from "../assets/images/products/mala_1.png";
+import malas from "../assets/images/products/malas.png";
 // import bansuri from "../assets/images/products/bansuri.jpg";
 // import mala from "../assets/images/products/mala.jpg";
 import tub from "../assets/images/products/tub.png";
@@ -24,7 +25,7 @@ export const categories: Category[] = [
     id: 3,
     name: "Jewellery",
     slug: "jewellery",
-    image: Mala_1,
+    image: malas,
   },
   {
     id: 4,
