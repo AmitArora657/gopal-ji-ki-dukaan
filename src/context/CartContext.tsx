@@ -11,6 +11,7 @@ interface CartContextType {
   removeFromCart: (productId: number) => void;
 
   updateQuantity: (productId: number, quantity: number) => void;
+  clearCart: () => void;
 }
 
 interface CartProviderProps {
@@ -44,6 +45,10 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     });
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const removeFromCart = (productId: number) => {
     setCart((prevCart) =>
       prevCart.filter((item) => item.product.id !== productId),
@@ -70,6 +75,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
       }}
     >
       {children}
