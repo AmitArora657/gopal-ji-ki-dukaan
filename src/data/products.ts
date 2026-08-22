@@ -1,7 +1,7 @@
 import type { Product } from "../types/product";
 
 import mukut from "../assets/images/products/mukut.jpg";
-import dress from "../assets/images/products/dress-1.jpg";
+import dress from "../assets/images/products/dress.jpg";
 import bansuri from "../assets/images/products/bansuri.jpg";
 import mala from "../assets/images/products/mala.jpg";
 

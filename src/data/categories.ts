@@ -1,28 +1,35 @@
 import type { Category } from "../types/category";
 
+import mukut from "../assets/images/products/mukut.jpg";
+import dress_22 from "../assets/images/products/dress_22.png";
+import Mala_1 from "../assets/images/products/mala_1.png";
+// import bansuri from "../assets/images/products/bansuri.jpg";
+// import mala from "../assets/images/products/mala.jpg";
+import tub from "../assets/images/products/tub.png";
+
 export const categories: Category[] = [
   {
     id: 1,
     name: "Mukut",
     slug: "mukut",
-    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600",
+    image: mukut,
   },
   {
     id: 2,
     name: "Dress",
     slug: "dress",
-    image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600",
+    image: dress_22,
   },
   {
     id: 3,
     name: "Jewellery",
     slug: "jewellery",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600",
+    image: Mala_1,
   },
   {
     id: 4,
     name: "Accessories",
     slug: "accessories",
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=600",
+    image: tub,
   },
 ];
