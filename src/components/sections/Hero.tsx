@@ -21,7 +21,7 @@ const Hero = () => {
             <div className="mt-8 flex gap-4">
               <Button>Shop Now</Button>
 
-              <Button className="border border-red-900 bg-white text-red-900 hover:bg-red-50">
+              <Button className="border border-red-900 text-red-900">
                 Contact Us
               </Button>
             </div>

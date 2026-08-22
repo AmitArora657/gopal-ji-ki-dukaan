@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/ui/Button";
 
 interface CartSummaryProps {
@@ -5,6 +6,7 @@ interface CartSummaryProps {
 }
 
 const CartSummary = ({ subtotal }: CartSummaryProps) => {
+  const navigate = useNavigate();
   return (
     <div className="h-fit rounded-lg border p-6">
       <h2 className="mb-6 text-2xl font-semibold">Order Summary</h2>
@@ -26,7 +28,9 @@ const CartSummary = ({ subtotal }: CartSummaryProps) => {
         <span>₹ {subtotal}</span>
       </div>
 
-      <Button className="mt-6 w-full">Proceed to Checkout</Button>
+      <Button className="mt-6 w-full" onClick={() => navigate("/checkout")}>
+        Proceed to Checkout
+      </Button>
     </div>
   );
 };
