@@ -10,6 +10,7 @@ import Cart from "../pages/Cart/Cart";
 import Checkout from "../pages/Checkout/Checkout";
 import Payment from "../pages/Payment/Payment";
 import OrderConfirmation from "../pages/OrderConfirmation/OrderConfirmation";
+import Login from "../pages/Login/Login";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
